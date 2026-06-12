@@ -106,10 +106,6 @@ export function TwoFaTool() {
 
       {/* Results — slot is ALWAYS rendered so Generate never shifts the layout */}
       <div className="flex flex-col gap-3">
-        <div className={cn("flex items-center justify-end", !hasResults && "opacity-35")}>
-          <CountdownRing seconds={hasResults ? timeLeft : 30} />
-        </div>
-
         {hasResults ? (
           /* Internal scroll keeps the page itself at one viewport even with many secrets */
           <div className="flex max-h-[176px] flex-col gap-3 overflow-y-auto pr-0.5 [color-scheme:light]">
@@ -143,19 +139,25 @@ export function TwoFaTool() {
           </div>
         )}
 
-        <div className="flex items-center gap-2 pt-1">
-          <LightGhostAction
-            onClick={() => { void copyAll() }}
-            disabled={!hasResults}
-            icon={<Copy className="size-3.5" />}
-            label={copiedId === "__all" ? "Copied" : "Copy all"}
-          />
-          <LightGhostAction
-            onClick={exportTxt}
-            disabled={!hasResults}
-            icon={<Download className="size-3.5" />}
-            label="Export"
-          />
+        {/* Actions left, countdown right — single row keeps the block compact */}
+        <div className="flex items-center justify-between pt-1">
+          <div className="flex items-center gap-2">
+            <LightGhostAction
+              onClick={() => { void copyAll() }}
+              disabled={!hasResults}
+              icon={<Copy className="size-3.5" />}
+              label={copiedId === "__all" ? "Copied" : "Copy all"}
+            />
+            <LightGhostAction
+              onClick={exportTxt}
+              disabled={!hasResults}
+              icon={<Download className="size-3.5" />}
+              label="Export"
+            />
+          </div>
+          <div className={cn("pr-1", !hasResults && "opacity-35")}>
+            <CountdownRing seconds={hasResults ? timeLeft : 30} />
+          </div>
         </div>
         <p className={cn(siteText.labelS, "text-[var(--solid-400)]")}>
           Export saves secret|code pairs to a local .txt file — it contains your raw secrets, store it safely.

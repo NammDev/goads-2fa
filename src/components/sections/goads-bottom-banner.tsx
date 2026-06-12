@@ -16,7 +16,7 @@ export function GoadsBottomBanner() {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group relative block h-[96px] w-full overflow-hidden rounded-[20px] border border-[var(--alpha-700)] no-underline max-md:h-[88px]",
+        "group relative block h-[144px] w-full overflow-hidden rounded-[20px] border border-[var(--alpha-700)] no-underline max-md:h-[112px]",
         "transition-colors duration-[500ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:border-[var(--alpha-500)]",
       )}
     >
@@ -30,10 +30,13 @@ export function GoadsBottomBanner() {
       {/* Left scrim for copy legibility — always dark, matches the artwork */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#101522f5] via-[#10152299] to-[#10152226]" />
       <div className="absolute inset-0 flex items-center justify-between gap-4 px-6 max-md:px-4">
-        <div className="flex min-w-0 flex-col gap-0.5">
+        <div className="flex min-w-0 flex-col gap-1">
           <span className={cn(siteText.overline, "text-[#ffffff8c]")}>Built by GOADS</span>
-          <span className={cn(siteText.headingM, "truncate text-white")}>
+          <span className={cn(siteText.headingL, "truncate text-white")}>
             Premium agency ad accounts for performance marketers
+          </span>
+          <span className={cn(siteText.bodyS, "truncate text-[#ffffffa8] max-md:hidden")}>
+            Fast top-ups, real human support, campaigns that never pause.
           </span>
         </div>
         <span className={cn(siteText.labelS, "flex shrink-0 items-center gap-1 text-white")}>
