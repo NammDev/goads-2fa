@@ -1,0 +1,121 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ── Foreplay-parity breakpoints + page container ── */
+@theme {
+  --breakpoint-fp-sm: 480px;   /* max-fp-sm: ≤479 */
+  --breakpoint-fp-lg: 992px;   /* fp-lg: ≥992 / max-fp-lg: ≤991 */
+  --container-site: 1440px;
+}
+
+/* ── Tailwind v4 semantic mapping (CSS-first) ── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display, var(--font-sans));
+  --font-mono: ui-monospace, monospace;
+  --radius: var(--radius);
+}
+
+/* ── Dark theme scoped to the .site wrapper (marketing + tools) ── */
+.site {
+  /* Pin dark native UI (inputs, scrollbars, autofill) regardless of OS theme */
+  color-scheme: dark;
+
+  --background: #020308;          /* near-black with blue tint */
+  --foreground: #ffffff;
+  --card: #ffffff1a;              /* white 10% */
+  --card-foreground: #ffffff;
+  --popover: #ffffff1a;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #090a0e;  /* solid-900 */
+  --secondary: #ffffff1a;         /* white 10% */
+  --secondary-foreground: #ffffff;
+  --muted: #ffffff0f;             /* white 6% */
+  --muted-foreground: #ffffffd6;  /* white 84% */
+  --accent: #1c9cf0;              /* restrained brand-blue */
+  --accent-foreground: #ffffff;
+  --accent-soft: #1c9cf01f;       /* ~12% — chips, tints, hover */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #ffffff29;            /* white 16% */
+  --input: #ffffff29;             /* white 16% */
+  --ring: #ffffff;
+
+  --font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter), 'Inter Display', ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Neutral / alpha palette (white at opacities — text/borders on DARK bg) ── */
+  --alpha-0: #ffffff;
+  --alpha-25: #ffffffeb;
+  --alpha-50: #ffffffd6;
+  --alpha-100: #ffffffad;
+  --alpha-200: #ffffff70;
+  --alpha-300: #ffffff5c;
+  --alpha-400: #ffffff52;
+  --alpha-500: #fff3;
+  --alpha-600: #ffffff29;
+  --alpha-700: #ffffff1a;
+  --alpha-800: #ffffff0f;
+  --alpha-900: #ffffff08;
+
+  /* ── Solid palette (solid grays — text/borders/fills on WHITE bg) ── */
+  --solid-0: #ffffff;
+  --solid-25: #f9f9fa;
+  --solid-50: #e9eaef;
+  --solid-100: #dddee5;
+  --solid-200: #c3c5d2;
+  --solid-300: #b2b4c5;
+  --solid-400: #4c505f;
+  --solid-500: #343642;
+  --solid-600: #24262e;
+  --solid-700: #171920;
+  --solid-800: #0f1116;
+  --solid-900: #090a0e;
+
+  --lime-green: #10b981;
+  --nav-bg: #020308eb;
+  --border-nav: #2a2b30;
+
+  /* ── Section vertical padding scale ── */
+  --py-section: 108px;
+  --py-section-md: 96px;
+  --py-section-sm: 80px;
+
+  --radius: 1rem;
+}
+
+/* Force the window canvas dark when the .site wrapper is present */
+html:has(.site) {
+  background-color: #020308;
+  color-scheme: dark;
+}
+
+/* ── Base layer ── */
+body {
+  @apply bg-background text-foreground;
+}
+
+code,
+pre {
+  font-family: ui-monospace, monospace;
+}
