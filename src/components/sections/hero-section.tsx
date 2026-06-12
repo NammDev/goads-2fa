@@ -6,9 +6,8 @@ export function HeroSection() {
     <SectionHead
       titleTag="h1"
       titleSize="h3"
-      subtitle="FREE 2FA CODE GENERATOR"
       title="Get your 2FA codes. Right in your browser."
-      description="Paste your secret key, get the 6-digit code instantly — no signup, secrets never leave your browser."
+      description="Free 2FA code generator — paste your secret key, get the 6-digit code instantly. No signup, secrets never leave your browser."
     />
   )
 }

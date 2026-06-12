@@ -85,7 +85,7 @@ export function TwoFaTool() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Paste secrets, one per line"
-          rows={3}
+          rows={2}
           spellCheck={false}
           className={cn(
             siteText.bodyM,

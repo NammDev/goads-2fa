@@ -12,12 +12,12 @@ import { StructuredData } from "@/components/seo/structured-data"
  */
 export default function HomePage() {
   return (
-    <main className="flex min-h-0 flex-1 flex-col pb-3 pt-5 max-lg:overflow-y-auto">
+    <main className="flex min-h-0 flex-1 flex-col pb-3 pt-4 max-lg:overflow-y-auto">
       <StructuredData />
       <SectionContainer variant="wide">
         <div className="flex items-start justify-center gap-10 max-xl:gap-6">
           <GoadsSideBanner content="banner_left" className="max-lg:hidden" />
-          <div className="flex w-full max-w-[720px] flex-col gap-5 max-md:gap-4">
+          <div className="flex w-full max-w-[720px] flex-col gap-4">
             <HeroSection />
             <ToolSection />
             <GoadsBottomBanner />
