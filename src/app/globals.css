@@ -39,7 +39,7 @@
 .site {
   color-scheme: light;
 
-  --background: #f4f6fb;          /* light slate canvas */
+  --background: #ffffff;          /* pure white canvas — banners pop against it */
   --foreground: #101522;          /* brand ink (mirrors dark bg) */
   --card: #1015220f;
   --card-foreground: #101522;
@@ -92,7 +92,7 @@
   --solid-900: #090a0e;
 
   --lime-green: #10b981;
-  --nav-bg: #f4f6fbeb;
+  --nav-bg: #ffffffeb;
   --border-nav: #dfe2ea;
 
   /* ── Section vertical padding scale ── */
@@ -142,7 +142,7 @@ html.dark .site {
 
 /* Window canvas follows the active theme */
 html:has(.site) {
-  background-color: #f4f6fb;
+  background-color: #ffffff;
   color-scheme: light;
 }
 html.dark:has(.site) {
