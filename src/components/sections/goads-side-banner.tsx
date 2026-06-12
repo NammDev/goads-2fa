@@ -6,7 +6,7 @@ import { siteText } from "@/components/atoms/typography"
 import { goadsUrl } from "@/data/site-links"
 
 interface GoadsSideBannerProps {
-  content: "banner_left" | "banner_right"
+  content: "banner_left"
   className?: string
 }
 
@@ -21,8 +21,8 @@ export function GoadsSideBanner({ content, className }: GoadsSideBannerProps) {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group relative block h-[480px] w-[180px] shrink-0 overflow-hidden rounded-[24px] border border-[#ffffff1f] no-underline",
-        "transition-colors duration-[500ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:border-[#ffffff47]",
+        "group relative block h-[480px] w-[180px] shrink-0 overflow-hidden rounded-[24px] border border-[var(--alpha-700)] no-underline",
+        "transition-colors duration-[500ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:border-[var(--alpha-500)]",
         className,
       )}
     >
@@ -35,12 +35,13 @@ export function GoadsSideBanner({ content, className }: GoadsSideBannerProps) {
       />
       {/* Scrim keeps overlay copy readable on any artwork */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#101522f5] via-[#10152233] to-[#10152259]" />
+      {/* Copy is always on dark artwork — fixed white regardless of theme */}
       <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-4">
-        <span className={cn(siteText.overline, "text-[var(--alpha-300)]")}>GOADS</span>
-        <span className={cn(siteText.headingM, "text-foreground")}>
+        <span className={cn(siteText.overline, "text-[#ffffff8c]")}>GOADS</span>
+        <span className={cn(siteText.headingM, "text-white")}>
           Premium agency ad accounts
         </span>
-        <span className={cn(siteText.labelS, "flex items-center gap-1 text-[var(--alpha-100)]")}>
+        <span className={cn(siteText.labelS, "flex items-center gap-1 text-[#ffffffd6]")}>
           Scale your campaigns
           <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </span>

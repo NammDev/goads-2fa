@@ -1,7 +1,6 @@
 import { ToolHeader } from "@/components/tools/tool-header"
 import { ToolBody } from "@/components/tools/tool-body"
 import { TwoFaTool } from "@/components/tools/two-fa-tool"
-import { GoadsPromoStrip } from "@/components/sections/goads-promo-strip"
 
 function ShieldCheckIcon() {
   return (
@@ -23,10 +22,9 @@ export function ToolSection() {
   return (
     <div className="flex flex-col gap-5 max-md:gap-4">
       <ToolHeader icon={<ShieldCheckIcon />} title="2FA Generator" />
-      <ToolBody>
+      <ToolBody className="p-6 max-md:p-4" gap="gap-4">
         <TwoFaTool />
       </ToolBody>
-      <GoadsPromoStrip />
     </div>
   )
 }

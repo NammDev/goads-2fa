@@ -104,14 +104,14 @@ export function TwoFaTool() {
         </div>
       </div>
 
-      {/* Results */}
-      {hasResults && (
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center justify-end">
-            <CountdownRing seconds={timeLeft} />
-          </div>
+      {/* Results — slot is ALWAYS rendered so Generate never shifts the layout */}
+      <div className="flex flex-col gap-3">
+        <div className={cn("flex items-center justify-end", !hasResults && "opacity-35")}>
+          <CountdownRing seconds={hasResults ? timeLeft : 30} />
+        </div>
 
-          {/* Internal scroll keeps the page itself at one viewport even with many secrets */}
+        {hasResults ? (
+          /* Internal scroll keeps the page itself at one viewport even with many secrets */
           <div className="flex max-h-[176px] flex-col gap-3 overflow-y-auto pr-0.5 [color-scheme:light]">
             {entries.map((entry) => (
               <CodeCard
@@ -122,24 +122,45 @@ export function TwoFaTool() {
               />
             ))}
           </div>
-
-          <div className="flex items-center gap-2 pt-1">
-            <LightGhostAction
-              onClick={() => { void copyAll() }}
-              icon={<Copy className="size-3.5" />}
-              label={copiedId === "__all" ? "Copied" : "Copy all"}
-            />
-            <LightGhostAction
-              onClick={exportTxt}
-              icon={<Download className="size-3.5" />}
-              label="Export"
-            />
+        ) : (
+          /* Placeholder row mirrors CodeCard metrics exactly (px-5 py-4, 2.25rem code) */
+          <div
+            aria-hidden
+            className="flex w-full items-center justify-between gap-4 rounded-[16px] border border-dashed border-[var(--solid-100)] bg-[var(--solid-25)] px-5 py-4 max-md:px-4"
+          >
+            <span className={cn(siteText.labelS, "text-[var(--solid-300)]")}>
+              Your 6-digit code appears here
+            </span>
+            <div className="flex shrink-0 items-center gap-3">
+              <span className={cn(
+                "font-display text-[2.25rem] font-semibold leading-none tracking-[0.04em] text-[var(--solid-100)] [font-variant-numeric:tabular-nums]",
+                "max-md:text-[1.75rem]",
+              )}>
+                ••• •••
+              </span>
+              <span className="w-[78px] shrink-0" />
+            </div>
           </div>
-          <p className={cn(siteText.labelS, "text-[var(--solid-400)]")}>
-            Export saves secret|code pairs to a local .txt file — it contains your raw secrets, store it safely.
-          </p>
+        )}
+
+        <div className="flex items-center gap-2 pt-1">
+          <LightGhostAction
+            onClick={() => { void copyAll() }}
+            disabled={!hasResults}
+            icon={<Copy className="size-3.5" />}
+            label={copiedId === "__all" ? "Copied" : "Copy all"}
+          />
+          <LightGhostAction
+            onClick={exportTxt}
+            disabled={!hasResults}
+            icon={<Download className="size-3.5" />}
+            label="Export"
+          />
         </div>
-      )}
+        <p className={cn(siteText.labelS, "text-[var(--solid-400)]")}>
+          Export saves secret|code pairs to a local .txt file — it contains your raw secrets, store it safely.
+        </p>
+      </div>
     </>
   )
 }

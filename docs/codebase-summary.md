@@ -46,8 +46,8 @@
 │   │   ├── sections/               # Page sections (RSC, no client state)
 │   │   │   ├── hero-section.tsx
 │   │   │   ├── tool-section.tsx    # Wraps TwoFaTool in layout shell
-│   │   │   ├── goads-promo-strip.tsx   # Slim banner under tool (utm_content=tool_strip)
-│   │   │   └── goads-side-banner.tsx   # Vertical GOADS ad placements (public/images/goads-banner.png)
+│   │   │   ├── goads-side-banner.tsx   # Vertical GOADS placement, left of tool (goads-banner.png)
+│   │   │   └── goads-bottom-banner.tsx # Horizontal GOADS placement under tool (goads-banner-wide.png)
 │   │   ├── layout/
 │   │   │   ├── site-header.tsx     # Logo + GOADS CTA (utm_content=header)
 │   │   │   └── site-footer.tsx     # Links + GOADS CTA (utm_content=footer)
@@ -75,7 +75,8 @@
 | `lib/totp.ts` | Pure async TOTP — no deps, Web Crypto only. Exports `generateTOTP`, `parseSecrets`, `formatCode` |
 | `lib/clipboard.ts` | Clipboard write with graceful fallback |
 | `lib/utils.ts` | `cn()` — clsx + tailwind-merge |
-| `data/site-links.ts` | `goadsUrl(content)` — five UTM touchpoints: `header`, `footer`, `tool_strip`, `banner_left`, `banner_right` |
+| `data/site-links.ts` | `goadsUrl(content)` — four UTM touchpoints: `header`, `footer`, `banner_left`, `banner_bottom` |
+| `components/layout/theme-toggle.tsx` | Light/dark switch — `html.dark` class + localStorage; light is default (pre-paint script in root layout) |
 | `components/tools/two-fa-tool.tsx` | Only client component. Owns: input state, code generation loop, 30 s countdown refresh, copy/export |
 | `components/seo/structured-data.tsx` | Inline `<script type="application/ld+json">` — WebApplication |
 | `app/opengraph-image.tsx` | Edge-rendered OG image via Next.js ImageResponse |

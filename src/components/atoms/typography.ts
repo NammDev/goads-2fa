@@ -1,7 +1,8 @@
 // Usage: import { siteText } from "@/components/atoms/typography"
 
+// Theme-aware: alpha-0/alpha-25 are "ink at opacities" and flip with light/dark
 export const SITE_HERO_GRADIENT =
-  "[background-image:radial-gradient(circle_at_50%_-100%,#fff,#ffffffe0)] bg-clip-text [-webkit-text-fill-color:transparent]";
+  "[background-image:radial-gradient(circle_at_50%_-100%,var(--alpha-0),var(--alpha-25))] bg-clip-text [-webkit-text-fill-color:transparent]";
 
 export const siteText = {
   // Display headings — Inter Display + font-optical-sizing:auto.

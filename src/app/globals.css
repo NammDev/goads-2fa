@@ -35,48 +35,47 @@
   --radius: var(--radius);
 }
 
-/* ── Dark theme scoped to the .site wrapper (marketing + tools) ── */
+/* ── Theme scoped to the .site wrapper — LIGHT is default, html.dark overrides ── */
 .site {
-  /* Pin dark native UI (inputs, scrollbars, autofill) regardless of OS theme */
-  color-scheme: dark;
+  color-scheme: light;
 
-  --background: #101522;          /* dark slate-navy (rebrand: lighter than original #020308) */
-  --foreground: #ffffff;
-  --card: #ffffff1a;              /* white 10% */
-  --card-foreground: #ffffff;
-  --popover: #ffffff1a;
-  --popover-foreground: #ffffff;
-  --primary: #ffffff;
-  --primary-foreground: #090a0e;  /* solid-900 */
-  --secondary: #ffffff1a;         /* white 10% */
-  --secondary-foreground: #ffffff;
-  --muted: #ffffff0f;             /* white 6% */
-  --muted-foreground: #ffffffd6;  /* white 84% */
+  --background: #f4f6fb;          /* light slate canvas */
+  --foreground: #101522;          /* brand ink (mirrors dark bg) */
+  --card: #1015220f;
+  --card-foreground: #101522;
+  --popover: #ffffff;
+  --popover-foreground: #101522;
+  --primary: #101522;
+  --primary-foreground: #ffffff;
+  --secondary: #1015220f;
+  --secondary-foreground: #101522;
+  --muted: #1015220a;
+  --muted-foreground: #101522d6;
   --accent: #1c9cf0;              /* restrained brand-blue */
   --accent-foreground: #ffffff;
   --accent-soft: #1c9cf01f;       /* ~12% — chips, tints, hover */
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #ffffff29;            /* white 16% */
-  --input: #ffffff29;             /* white 16% */
-  --ring: #ffffff;
+  --border: #10152226;
+  --input: #10152226;
+  --ring: #101522;
 
   --font-sans: var(--font-inter), 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter), 'Inter Display', ui-sans-serif, system-ui, sans-serif;
 
-  /* ── Neutral / alpha palette (white at opacities — text/borders on DARK bg) ── */
-  --alpha-0: #ffffff;
-  --alpha-25: #ffffffeb;
-  --alpha-50: #ffffffd6;
-  --alpha-100: #ffffffad;
-  --alpha-200: #ffffff70;
-  --alpha-300: #ffffff5c;
-  --alpha-400: #ffffff52;
-  --alpha-500: #fff3;
-  --alpha-600: #ffffff29;
-  --alpha-700: #ffffff1a;
-  --alpha-800: #ffffff0f;
-  --alpha-900: #ffffff08;
+  /* ── Alpha palette = "ink at opacities" — flips with theme so components adapt ── */
+  --alpha-0: #101522;
+  --alpha-25: #101522eb;
+  --alpha-50: #101522d6;
+  --alpha-100: #101522ad;
+  --alpha-200: #10152270;
+  --alpha-300: #1015225c;
+  --alpha-400: #10152252;
+  --alpha-500: #10152233;
+  --alpha-600: #10152229;
+  --alpha-700: #1015221a;
+  --alpha-800: #1015220f;
+  --alpha-900: #10152208;
 
   /* ── Solid palette (solid grays — text/borders/fills on WHITE bg) ── */
   --solid-0: #ffffff;
@@ -93,8 +92,8 @@
   --solid-900: #090a0e;
 
   --lime-green: #10b981;
-  --nav-bg: #101522eb;
-  --border-nav: #2a2b30;
+  --nav-bg: #f4f6fbeb;
+  --border-nav: #dfe2ea;
 
   /* ── Section vertical padding scale ── */
   --py-section: 108px;
@@ -104,8 +103,49 @@
   --radius: 1rem;
 }
 
-/* Force the window canvas dark when the .site wrapper is present */
+/* ── Dark theme overrides (html.dark set pre-paint by the theme script) ── */
+html.dark .site {
+  color-scheme: dark;
+
+  --background: #101522;          /* dark slate-navy */
+  --foreground: #ffffff;
+  --card: #ffffff1a;
+  --card-foreground: #ffffff;
+  --popover: #ffffff1a;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #090a0e;
+  --secondary: #ffffff1a;
+  --secondary-foreground: #ffffff;
+  --muted: #ffffff0f;
+  --muted-foreground: #ffffffd6;
+  --border: #ffffff29;
+  --input: #ffffff29;
+  --ring: #ffffff;
+
+  --alpha-0: #ffffff;
+  --alpha-25: #ffffffeb;
+  --alpha-50: #ffffffd6;
+  --alpha-100: #ffffffad;
+  --alpha-200: #ffffff70;
+  --alpha-300: #ffffff5c;
+  --alpha-400: #ffffff52;
+  --alpha-500: #fff3;
+  --alpha-600: #ffffff29;
+  --alpha-700: #ffffff1a;
+  --alpha-800: #ffffff0f;
+  --alpha-900: #ffffff08;
+
+  --nav-bg: #101522eb;
+  --border-nav: #2a2b30;
+}
+
+/* Window canvas follows the active theme */
 html:has(.site) {
+  background-color: #f4f6fb;
+  color-scheme: light;
+}
+html.dark:has(.site) {
   background-color: #101522;
   color-scheme: dark;
 }

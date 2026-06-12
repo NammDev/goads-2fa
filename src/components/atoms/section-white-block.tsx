@@ -9,8 +9,8 @@ export function SectionWhiteBlock({ children, className }: SectionWhiteBlockProp
       <div
         className={cn(
           "relative z-[2] overflow-hidden rounded-[36px]",
-          // ALWAYS white — never dark-mode-inverted
-          "bg-white text-[var(--solid-700)]",
+          // ALWAYS white — never dark-mode-inverted; soft ring delineates it on light bg
+          "bg-white text-[var(--solid-700)] shadow-[0_0_0_1px_var(--alpha-800),0_8px_24px_#10152214]",
           className,
         )}
       >

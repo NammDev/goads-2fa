@@ -5,7 +5,7 @@ import { goadsUrl } from "@/data/site-links"
 /** Slim single-row footer — fits the single-viewport shell. */
 export function SiteFooter() {
   return (
-    <footer className="shrink-0 border-t border-[#ffffff14] py-3.5">
+    <footer className="shrink-0 border-t border-[var(--alpha-800)] py-3.5">
       <SectionContainer variant="footer">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1.5 max-md:justify-center">
           <span className={`${siteText.labelS} text-foreground`}>2FA.media</span>
