@@ -2,16 +2,18 @@ import { SectionContainer } from "@/components/atoms/section-container"
 import { siteText } from "@/components/atoms/typography"
 import { goadsUrl } from "@/data/site-links"
 
-/** Site footer: wordmark, tagline, GOADS link, privacy note, copyright. */
+/** Slim single-row footer — fits the single-viewport shell. */
 export function SiteFooter() {
   return (
-    <footer className="border-t border-[#ffffff29] py-12">
+    <footer className="shrink-0 border-t border-[#ffffff14] py-3.5">
       <SectionContainer variant="footer">
-        <div className="flex flex-col gap-3">
-          <span className={`${siteText.headingL} text-foreground`}>2FA.media</span>
-          <p className={`${siteText.bodyS} text-[var(--alpha-300)]`}>
-            Free browser-only 2FA codes.{" "}
-            A free tool by{" "}
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1.5 max-md:justify-center">
+          <span className={`${siteText.labelS} text-foreground`}>2FA.media</span>
+          <p className={`${siteText.bodyXs} text-[var(--alpha-300)]`}>
+            We never see your secrets — everything runs in your browser.
+          </p>
+          <p className={`${siteText.bodyXs} text-[var(--alpha-300)]`}>
+            © {new Date().getFullYear()} · A free tool by{" "}
             <a
               href={goadsUrl("footer")}
               target="_blank"
@@ -20,13 +22,6 @@ export function SiteFooter() {
             >
               GOADS
             </a>
-            .
-          </p>
-          <p className={`${siteText.bodyS} text-[var(--alpha-200)]`}>
-            We never see your secrets — everything runs in your browser.
-          </p>
-          <p className={`${siteText.bodyXs} text-[var(--alpha-300)] mt-4`}>
-            © {new Date().getFullYear()} 2FA.media
           </p>
         </div>
       </SectionContainer>

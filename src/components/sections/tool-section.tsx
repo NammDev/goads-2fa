@@ -1,4 +1,3 @@
-import { SectionContainer } from "@/components/atoms/section-container"
 import { ToolHeader } from "@/components/tools/tool-header"
 import { ToolBody } from "@/components/tools/tool-body"
 import { TwoFaTool } from "@/components/tools/two-fa-tool"
@@ -19,19 +18,15 @@ function ShieldCheckIcon() {
   )
 }
 
-/** Centered tool block — ToolHeader + white ToolBody containing TwoFaTool. */
+/** Tool block: header + white body + GOADS strip. Parent owns width/placement. */
 export function ToolSection() {
   return (
-    <section className="py-10 max-md:py-8">
-      <SectionContainer variant="wide">
-        <div className="mx-auto flex max-w-[960px] flex-col gap-6 max-md:gap-5">
-          <ToolHeader icon={<ShieldCheckIcon />} title="2FA Generator" />
-          <ToolBody>
-            <TwoFaTool />
-          </ToolBody>
-          <GoadsPromoStrip />
-        </div>
-      </SectionContainer>
-    </section>
+    <div className="flex flex-col gap-5 max-md:gap-4">
+      <ToolHeader icon={<ShieldCheckIcon />} title="2FA Generator" />
+      <ToolBody>
+        <TwoFaTool />
+      </ToolBody>
+      <GoadsPromoStrip />
+    </div>
   )
 }

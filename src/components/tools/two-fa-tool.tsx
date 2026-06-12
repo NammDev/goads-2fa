@@ -85,7 +85,7 @@ export function TwoFaTool() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Paste secrets, one per line"
-          rows={5}
+          rows={3}
           spellCheck={false}
           className={cn(
             siteText.bodyM,
@@ -111,14 +111,17 @@ export function TwoFaTool() {
             <CountdownRing seconds={timeLeft} />
           </div>
 
-          {entries.map((entry) => (
-            <CodeCard
-              key={entry.secret}
-              entry={entry}
-              copied={copiedId === entry.secret}
-              onCopy={() => { void copyCode(entry) }}
-            />
-          ))}
+          {/* Internal scroll keeps the page itself at one viewport even with many secrets */}
+          <div className="flex max-h-[176px] flex-col gap-3 overflow-y-auto pr-0.5 [color-scheme:light]">
+            {entries.map((entry) => (
+              <CodeCard
+                key={entry.secret}
+                entry={entry}
+                copied={copiedId === entry.secret}
+                onCopy={() => { void copyCode(entry) }}
+              />
+            ))}
+          </div>
 
           <div className="flex items-center gap-2 pt-1">
             <LightGhostAction

@@ -15,7 +15,7 @@
 │   │   ├── globals.css             # Tailwind v4 entry + CSS vars
 │   │   ├── (marketing)/
 │   │   │   ├── layout.tsx          # Marketing layout wrapper
-│   │   │   └── page.tsx            # Single page: Hero → Tool → Promo → FAQ
+│   │   │   └── page.tsx            # Single-viewport page: hero + tool centered, GOADS side banners (no scroll on desktop)
 │   │   ├── opengraph-image.tsx     # OG image (Next.js ImageResponse)
 │   │   ├── sitemap.ts              # Single-URL sitemap
 │   │   ├── robots.ts               # robots.txt
@@ -26,7 +26,6 @@
 │   │   ├── utils.ts                # cn() Tailwind class merger
 │   │   └── clipboard.ts            # copyToClipboard() — Clipboard API + execCommand fallback
 │   ├── data/
-│   │   ├── faq-content.ts          # FAQ_ITEMS[] — single source for UI + JSON-LD
 │   │   └── site-links.ts           # goadsUrl(content) — UTM-tagged GOADS links
 │   ├── components/
 │   │   ├── atoms/                  # Design-system primitives (ported from design-system bundle)
@@ -47,14 +46,13 @@
 │   │   ├── sections/               # Page sections (RSC, no client state)
 │   │   │   ├── hero-section.tsx
 │   │   │   ├── tool-section.tsx    # Wraps TwoFaTool in layout shell
-│   │   │   ├── goads-promo-section.tsx # 2-col panel: copy + AI artwork (public/images/goads-promo.png)
-│   │   │   ├── goads-promo-strip.tsx   # Slim above-fold banner under tool (utm_content=tool_strip)
-│   │   │   └── faq-section.tsx
+│   │   │   ├── goads-promo-strip.tsx   # Slim banner under tool (utm_content=tool_strip)
+│   │   │   └── goads-side-banner.tsx   # Vertical GOADS ad placements (public/images/goads-banner.png)
 │   │   ├── layout/
 │   │   │   ├── site-header.tsx     # Logo + GOADS CTA (utm_content=header)
 │   │   │   └── site-footer.tsx     # Links + GOADS CTA (utm_content=footer)
 │   │   └── seo/
-│   │       └── structured-data.tsx # JSON-LD: WebApplication + FAQPage schemas
+│   │       └── structured-data.tsx # JSON-LD: WebApplication schema
 │   └── fonts/
 │       └── index.ts                # Next.js font definitions
 ├── scripts/
@@ -77,10 +75,9 @@
 | `lib/totp.ts` | Pure async TOTP — no deps, Web Crypto only. Exports `generateTOTP`, `parseSecrets`, `formatCode` |
 | `lib/clipboard.ts` | Clipboard write with graceful fallback |
 | `lib/utils.ts` | `cn()` — clsx + tailwind-merge |
-| `data/faq-content.ts` | `FAQ_ITEMS[]` — drives both `FaqSection` render and `StructuredData` JSON-LD |
-| `data/site-links.ts` | `goadsUrl(content)` — five UTM touchpoints: `header`, `promo`, `footer`, `faq`, `tool_strip` |
+| `data/site-links.ts` | `goadsUrl(content)` — five UTM touchpoints: `header`, `footer`, `tool_strip`, `banner_left`, `banner_right` |
 | `components/tools/two-fa-tool.tsx` | Only client component. Owns: input state, code generation loop, 30 s countdown refresh, copy/export |
-| `components/seo/structured-data.tsx` | Inline `<script type="application/ld+json">` — WebApplication + FAQPage |
+| `components/seo/structured-data.tsx` | Inline `<script type="application/ld+json">` — WebApplication |
 | `app/opengraph-image.tsx` | Edge-rendered OG image via Next.js ImageResponse |
 | `scripts/verify-totp.mjs` | Standalone RFC verification — mirrors `totp.ts` algorithm, tests 4 RFC vectors + base32 edge cases |
 

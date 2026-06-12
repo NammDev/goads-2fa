@@ -9,7 +9,8 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
         "site",
         fontInter.variable,
         // base body
-        "min-h-svh bg-background text-muted-foreground",
+        // Single-viewport app shell: header + flexible main + slim footer, no page scroll on desktop
+        "flex h-dvh flex-col bg-background text-muted-foreground",
         "font-sans text-base font-normal leading-6 tracking-[-0.01125em]",
         "overflow-x-clip",
         "antialiased",

@@ -1,5 +1,3 @@
-import { FAQ_ITEMS } from "@/data/faq-content";
-
 const SITE_URL = "https://2fa.media";
 
 /** WebApplication JSON-LD schema for 2FA.media. */
@@ -22,22 +20,9 @@ const webApplicationSchema = {
   },
 };
 
-/** FAQPage JSON-LD schema generated from the single-source faq-content.ts array. */
-const faqPageSchema = {
-  "@type": "FAQPage",
-  mainEntity: FAQ_ITEMS.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [webApplicationSchema, faqPageSchema],
+  "@graph": [webApplicationSchema],
 };
 
 /**
