@@ -104,8 +104,9 @@ export function TwoFaTool() {
         </div>
       </div>
 
-      {/* Results — slot is ALWAYS rendered so Generate never shifts the layout */}
-      <div className="flex flex-col gap-3">
+      {/* Results — always shown on desktop (placeholder teaches the flow); on mobile the
+          empty state is hidden so the banner stays visible until the user generates. */}
+      <div className={cn("flex flex-col gap-3", !hasResults && "max-md:hidden")}>
         {hasResults ? (
           /* Internal scroll keeps the page itself at one viewport even with many secrets */
           <div className="flex max-h-[176px] flex-col gap-3 overflow-y-auto pr-0.5 [color-scheme:light]">

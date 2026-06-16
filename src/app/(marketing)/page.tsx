@@ -12,7 +12,7 @@ import { StructuredData } from "@/components/seo/structured-data"
  */
 export default function HomePage() {
   return (
-    <main className="flex min-h-0 flex-1 flex-col pb-3 pt-4 max-lg:overflow-y-auto">
+    <main className="flex min-h-0 flex-1 flex-col pb-3 pt-8 max-md:pt-5 max-lg:overflow-y-auto">
       <StructuredData />
       <SectionContainer variant="wide">
         <div className="flex items-start justify-center gap-10 max-xl:gap-6">
